@@ -1,6 +1,13 @@
 # Trial-based CEA commands for Stata
 This repository holds Stata commands to conduct cost-effectiveness analyses for clinical trials. All commands currently assume that data come from a randomized controlled trial (RCT) and that analyses will be conducted within-trial. Decision tree and Markov models that rely on sampling from probability distributions are not currently supported. Stata version 18.0 or higher is required.
 
+## Installation
+```
+ . net install github, from(https://haghish.github.io/github/)
+ . github install cea
+```
+Learn more about the `github` command at https://haghish.github.io/github/. 
+
 ## Overview of available commands
 The **cea** command suite is for commands that require data in memory and the **ceai** commands are a subset of immediate-form commands for univariate analyses. **ceagraph** is for plotting results.
 
