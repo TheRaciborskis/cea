@@ -199,21 +199,20 @@ Effect model : betareg                              Number treated     =   999
 ```
 The revised ICER estimate is $154,985 with a normal-based 95% CI of $71,584 to $238,386. The header output changes to reflect that **glm** was used to obtain adjusted estimates of cost and **betareg** for the outcome. 
 ## Overview of ceagraph
-After estimating the ICER, we most likely want to plot two common graphs used for CEA. To obtain a plot of the bootstrap replications and the point estimate of the ICER, all we need to do is type
-``
-. ceagraph scatter
-``
+After estimating the ICER, we most likely want to plot two common graphs used for CEA. To obtain a plot of the bootstrap replications and the point estimate of the ICER, all we need to do is type `ceagraph scatter`
 after our **cea** command. This produces the default plot shown below in Stata 18; plots in later Statas may look different if the Stata defaults change.
 ![image](png/readme_gr1.png) 
 
 All the usual **twoway** options may be used to further customize the aspects of the graph like title, axis labels, and legend. However, there are also custom options for the cost-effectiveness scatterplot. For example, we could add a 95% confidence ellipse with the **ellipse** option and display all four quadrants of the cost-effectiveness plane with the **quadrants** option.
 ```
-. ceagraph scatter, ellipse quadrants
+ceagraph scatter, ellipse quadrants
 ```
 ![image](png/readme_gr2.png)
 
 We can also plot the cost-effectiveness acceptability curve with **ceagraph accept**. The **wtp()** option specifies that **ceagraph** adds droplines from the CEAC at the specified willingness-to-pay values and draw lines to the corresponding proportion acceptable. 
-
+```
+ceagraph accept, wtp(100000(50000)200000)
+```
 ![image](png/readme_gr3.png)
 
 ## Reference
@@ -228,6 +227,6 @@ Rafal Raciborski, MA
 Dr. Raciborski developed an early version of the mean-only **cea** command as part of her work on the PRIME Care (PRecision medicine In MEntal health care) study; U.S. Department of Veterans Affairs Health Services Research and Development Grant (#1P1 HX002375-01/ SDR 16-348). The command was later re-written and all subsequent development done without financial support from the VA.  No warranty is expressed or implied and the views presented are those of the authors alone and do not necessarily represent those of the U.S. government or the funding agency.
 
 ## Bugs and new feature requests
-If you find a bug, please submit an issue via GitHub [Issue](https://github.com/TheRaciborskis/cea/issues/new). Be sure to describe exactly what is going wrong, what you expected to see instead, and provide code for us to replicate the problem. Select "Bug" as the label when you submit. 
+If you find a bug, please submit an issue via GitHub [Issues](https://github.com/TheRaciborskis/cea/issues/new). Be sure to describe exactly what is going wrong, what you expected to see instead, and provide code for us to replicate the problem. Select "Bug" as the label when you submit. 
 
 You can also request new featues by submitting an issue with the enhancement label. 
