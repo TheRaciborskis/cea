@@ -1,5 +1,5 @@
 * stata.toc for cea
-v 1
+v 3
 * packages title 
 d CEA for Stata
 d R Raciborski, RA Raciborski
