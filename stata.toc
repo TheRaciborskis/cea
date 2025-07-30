@@ -1,0 +1,11 @@
+* stata.toc for cea
+v 1
+* packages title 
+d CEA for Stata
+d R Raciborski, RA Raciborski
+d Distribution-Date: 20250730
+d 
+* available packages
+p cea Suite of commands for trial-based cost-effectiveness analysis
+* end
+e 
