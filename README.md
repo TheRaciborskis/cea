@@ -57,14 +57,13 @@ The most basic use of the **cea** command estimates the ICER from unadjusted ari
 . cea cost qaly, treat(tgroup)
 (running cea on estimation sample)
 
-Bootstrap replications (50)
-----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
-..................................................    50
+Bootstrap replications (50): .........10.........20.........30.........40......
+> ...50 done
 
 Cost effectiveness analysis
-Design type  : RCT                                  Number of obs      = 2,000
-Cost model   : arithmetic mean                      Number of controls = 1,001
-Effect model : arithmetic mean                      Number treated     =   999
+Cost model   : arithmetic mean                      Number of obs      = 2,000
+Effect model : arithmetic mean                      Number of controls = 1,001
+                                                    Number treated     =   999
 ------------------------------------------------------------------------------
              |   Observed   Bootstrap                         Normal-based
         ICER | coefficient  std. err.      z    P>|z|     [95% conf. interval]
@@ -72,7 +71,7 @@ Effect model : arithmetic mean                      Number treated     =   999
       tgroup |
  (Treatment  |
          vs  |
-   Control)  |   148417.6   46561.05     3.19   0.001     57159.64    239675.6
+   Control)  |   148417.6   41622.18     3.57   0.000     66839.66    229995.6
 ------------------------------------------------------------------------------
 ```
 The estimated ICER is about $148,418 with a normal-based 95% confidence interval of $57,159 to $239,675 with the default 50 bootstrap replications. The **cea** header shows the total number of observations and the number in each treatment condition. The header also shows that cost and effect are both modeled with the arithmetic mean. And it reminds you that the command assumes the data comes from an RCT.
@@ -91,15 +90,15 @@ Standard errors are bootstrapped using the Stata default specifications. The **c
 
 For example, specifing **seed(1423)** ensures the results can be replicated. The **dots(10)** suboption limits printing of the replication dots to one every 10 replications. 
 ```
-. cea cost qaly, treat(tgroup) vce(bootstrap, seed(1423) dots(10))
+. cea cost qaly, treat(tgroup) vce(bootstrap, seed(1423) reps(100) dots(10))
 (running cea on estimation sample)
 
 Bootstrap replications (100): .........100 done
 
 Cost effectiveness analysis
-Design type  : RCT                                  Number of obs      = 2,000
-Cost model   : arithmetic mean                      Number of controls = 1,001
-Effect model : arithmetic mean                      Number treated     =   999
+Cost model   : arithmetic mean                      Number of obs      = 2,000
+Effect model : arithmetic mean                      Number of controls = 1,001
+                                                    Number treated     =   999
 ------------------------------------------------------------------------------
              |   Observed   Bootstrap                         Normal-based
         ICER | coefficient  std. err.      z    P>|z|     [95% conf. interval]
@@ -117,6 +116,7 @@ Effect model : arithmetic mean                      Number treated     =   999
 
 Cost effectiveness analysis                     Number of obs     =      2,000
                                                 Replications      =        100
+
 ------------------------------------------------------------------------------
              |    Observed               Bootstrap
         ICER | coefficient       Bias    std. err.  [95% conf. interval]
@@ -131,9 +131,9 @@ To use analytic standard errors computed via the delta method instead of bootstr
 . cea cost qaly, treat(tgroup) vce(delta)
 
 Cost effectiveness analysis
-Design type  : RCT                                  Number of obs      = 2,000
-Cost model   : arithmetic mean                      Number of controls = 1,001
-Effect model : arithmetic mean                      Number treated     =   999
+Cost model   : arithmetic mean                      Number of obs      = 2,000
+Effect model : arithmetic mean                      Number of controls = 1,001
+                                                    Number treated     =   999
 ------------------------------------------------------------------------------
              |                Delta
         ICER | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
@@ -156,9 +156,9 @@ Bootstrap replications (50): .........10.........20.........30.........40......
 > ...50 done
 
 Cost effectiveness analysis
-Design type  : RCT                                  Number of obs      = 2,000
-Cost model   : arithmetic mean                      Number of controls = 1,001
-Effect model : arithmetic mean                      Number treated     =   999
+Cost model   : arithmetic mean                      Number of obs      = 2,000
+Effect model : arithmetic mean                      Number of controls = 1,001
+                                                    Number treated     =   999
 ------------------------------------------------------------------------------
              |   Observed   Bootstrap                         Normal-based
          NMB | coefficient  std. err.      z    P>|z|     [95% conf. interval]
@@ -179,14 +179,12 @@ The multivariable version of **cea** has the same functionality as the simpler s
 >     vce(boot, seed(1423) reps(1000) dots(100))
 (running cea on estimation sample)
 
-Bootstrap replications (1,000)
-----+--- 1 ---+--- 2 ---+--- 3 ---+--- 4 ---+--- 5 
-..........
+Bootstrap replications (1,000): .........1,000 done
 
 Cost effectiveness analysis
-Design type  : RCT                                  Number of obs      = 2,000
-Cost model   : glm                                  Number of controls = 1,001
-Effect model : betareg                              Number treated     =   999
+Cost model   : glm                                  Number of obs      = 2,000
+Effect model : betareg                              Number of controls = 1,001
+                                                    Number treated     =   999
 ------------------------------------------------------------------------------
              |   Observed   Bootstrap                         Normal-based
         ICER | coefficient  std. err.      z    P>|z|     [95% conf. interval]
