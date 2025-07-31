@@ -4,7 +4,7 @@ This repository holds Stata commands to conduct cost-effectiveness analyses for 
 ## Installation
 ```
  . net install github, from(https://haghish.github.io/github/)
- . github install cea
+ . github install TheRaciborskis/cea
 ```
 Learn more about the `github` command at https://haghish.github.io/github/. 
 
